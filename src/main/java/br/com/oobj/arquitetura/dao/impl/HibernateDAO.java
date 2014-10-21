@@ -74,6 +74,20 @@ public class HibernateDAO<E extends Entidade> implements DAO<E> {
 	 *
 	 * {@inheritDoc}
 	 *
+	 * @see br.com.oobj.arquitetura.dao.DAO#remover(br.com.oobj.arquitetura.model.Entidade)
+	 */
+	@Override
+	public void remover(final E entidade) throws NegocioException {
+
+		this.getManager().remove(entidade);
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
 	 * @see br.com.oobj.arquitetura.dao.DAO#listar()
 	 */
 	@Override

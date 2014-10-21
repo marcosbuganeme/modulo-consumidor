@@ -39,6 +39,18 @@ public interface ServiceFacade<E extends Entidade> extends Serializable {
 	void salvar(final E entidade) throws NegocioException;
 
 	/**
+	 * Método responsável por remover um objeto.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param entidade
+	 *            - objeto que soferá a ação.
+	 * 
+	 * @throws NegocioException
+	 */
+	void remover(final E entidade) throws NegocioException;
+
+	/**
 	 * Método responsável por obter todos os registros vinculados a entidade corrente.
 	 *
 	 * @author marcosbuganeme

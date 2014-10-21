@@ -36,7 +36,7 @@ public interface DAO<E extends Entidade> {
 	E obter(final Serializable identificador);
 
 	/**
-	 * Método responsável por salvar um objeto.
+	 * Método responsável por salvar um objeto da base de dados.
 	 *
 	 * @author marcosbuganeme
 	 *
@@ -46,6 +46,18 @@ public interface DAO<E extends Entidade> {
 	 * @throws NegocioException
 	 */
 	void salvar(final E entidade) throws NegocioException;
+
+	/**
+	 * Método responsável por remover um objeto da base de dados.
+	 *
+	 * @author marcosbuganeme
+	 *
+	 * @param entidade
+	 *            - objeto que soferá a ação.
+	 * 
+	 * @throws NegocioException
+	 */
+	void remover(final E entidade) throws NegocioException;
 
 	/**
 	 * Método responsável por obter todos os registros vinculados a entidade corrente.

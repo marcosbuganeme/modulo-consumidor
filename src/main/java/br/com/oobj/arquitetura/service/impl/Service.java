@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import br.com.oobj.arquitetura.dao.DAO;
 import br.com.oobj.arquitetura.exception.NegocioException;
+import br.com.oobj.arquitetura.exception.RegistroNaoExisteException;
 import br.com.oobj.arquitetura.model.Entidade;
 import br.com.oobj.arquitetura.service.ServiceFacade;
 
@@ -33,6 +34,9 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 	/** Constante CAMPOS_NULOS. */
 	private static final String CAMPOS_OBRIGATORIOS_NULOS = "validacao.camposobrigatorios";
 
+	/** Constante REGISTRO_NAO_EXISTE. */
+	private static final String REGISTRO_NAO_EXISTE = "validacao.registronaoexiste";
+
 	/** Atributo dao. */
 	private DAO<E> dao;
 
@@ -53,6 +57,27 @@ public abstract class Service<E extends Entidade> implements ServiceFacade<E> {
 		}
 
 		this.getDao().salvar(entidade);
+	}
+
+	/**
+	 * Descrição Padrão: <br>
+	 * <br>
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see br.com.oobj.arquitetura.service.ServiceFacade#remover(br.com.oobj.arquitetura.model.Entidade)
+	 */
+	@Override
+	public void remover(final E entidade) throws NegocioException {
+
+		final E entidadeObtida = this.getDao().obter(entidade.getIdentificador());
+
+		if (entidadeObtida == null) {
+
+			throw new RegistroNaoExisteException(Service.REGISTRO_NAO_EXISTE);
+		}
+
+		this.getDao().remover(entidade);
 	}
 
 	/**
