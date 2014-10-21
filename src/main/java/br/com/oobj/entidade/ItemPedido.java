@@ -1,7 +1,5 @@
 package br.com.oobj.entidade;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -32,15 +30,15 @@ public class ItemPedido extends EntidadeAbstrata {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -3001278585243190980L;
 
-	/** Atributo colecaoProdutos. */
+	/** Atributo produto. */
 	@ManyToOne
-	@JoinColumn(name = "id_produto", foreignKey = @ForeignKey(name = "FK_PRODUTO_TABLE_ITEM_PEDIDO"))
-	private Collection<Produto> colecaoProdutos;
+	@JoinColumn(name = "id_produto", foreignKey = @ForeignKey(name = "FK_PRODUTO_TABELA_ITEM_PEDIDO"))
+	private Produto produto;
 
-	/** Atributo colecaoPedidos. */
+	/** Atributo pedido. */
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_pedido", foreignKey = @ForeignKey(name = "FK_PEDIDO_TABLE_ITEM_PEDIDO"))
-	private Collection<Pedido> colecaoPedidos;
+	@JoinColumn(name = "id_pedido", foreignKey = @ForeignKey(name = "FK_PEDIDO_TABELA_ITEM_PEDIDO"))
+	private Pedido pedido;
 
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
@@ -52,55 +50,55 @@ public class ItemPedido extends EntidadeAbstrata {
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 * 
-	 * @param colecaoProdutos
+	 * @param produto
 	 * 
-	 * @param colecaoPedidos
+	 * @param pedido
 	 */
-	public ItemPedido( final Collection<Produto> colecaoProdutos, final Collection<Pedido> colecaoPedidos ) {
+	public ItemPedido( final Produto produto, final Pedido pedido ) {
 
-		this.colecaoProdutos = colecaoProdutos;
+		this.produto = produto;
 
-		this.colecaoPedidos = colecaoPedidos;
+		this.pedido = pedido;
 	}
 
 	/**
-	 * Retorna o valor do atributo <code>colecaoProdutos</code>
+	 * Retorna o valor do atributo <code>produto</code>
 	 *
-	 * @return <code>Collection<Produto></code>
+	 * @return <code>Produto</code>
 	 */
-	public Collection<Produto> getColecaoProdutos() {
+	public Produto getProduto() {
 
-		return this.colecaoProdutos;
+		return this.produto;
 	}
 
 	/**
-	 * Define o valor do atributo <code>colecaoProdutos</code>.
+	 * Define o valor do atributo <code>produto</code>.
 	 *
-	 * @param colecaoProdutos
+	 * @param produto
 	 */
-	public void setColecaoProdutos(final Collection<Produto> colecaoProdutos) {
+	public void setProduto(final Produto produto) {
 
-		this.colecaoProdutos = colecaoProdutos;
+		this.produto = produto;
 	}
 
 	/**
-	 * Retorna o valor do atributo <code>colecaoPedidos</code>
+	 * Retorna o valor do atributo <code>pedido</code>
 	 *
-	 * @return <code>Collection<Pedido></code>
+	 * @return <code>Pedido</code>
 	 */
-	public Collection<Pedido> getColecaoPedidos() {
+	public Pedido getPedido() {
 
-		return this.colecaoPedidos;
+		return this.pedido;
 	}
 
 	/**
-	 * Define o valor do atributo <code>colecaoPedidos</code>.
+	 * Define o valor do atributo <code>pedido</code>.
 	 *
-	 * @param colecaoPedidos
+	 * @param pedido
 	 */
-	public void setColecaoPedidos(final Collection<Pedido> colecaoPedidos) {
+	public void setPedido(final Pedido pedido) {
 
-		this.colecaoPedidos = colecaoPedidos;
+		this.pedido = pedido;
 	}
 
 }

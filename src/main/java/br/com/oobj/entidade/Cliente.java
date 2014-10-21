@@ -1,9 +1,13 @@
 package br.com.oobj.entidade;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.oobj.arquitetura.model.EntidadeAbstrata;
 
@@ -29,20 +33,23 @@ public class Cliente extends EntidadeAbstrata {
 	/** Constante serialVersionUID. */
 	private static final long serialVersionUID = -4698544215450649822L;
 
+	/** Atributo colecaoOedidos. */
+	@OneToMany(mappedBy = "cliente")
+	private Collection<Pedido> colecaoOedidos;
+
+	@NotEmpty
 	/** Atributo nome. */
 	@Column(name = "nome")
 	private String nome;
 
+	@NotEmpty
 	@Column(name = "email")
 	private String email;
 
+	@NotEmpty
 	@Column(name = "senha")
 	private String senha;
 
-	/** Atributo pedido. */
-	@OneToMany(mappedBy = "cliente")
-	private Pedido pedido;
-	
 	/**
 	 * Responsável pela criação de novas instâncias desta classe.
 	 */
@@ -66,6 +73,26 @@ public class Cliente extends EntidadeAbstrata {
 		this.email = email;
 
 		this.senha = senha;
+	}
+
+	/**
+	 * Retorna o valor do atributo <code>colecaoOedidos</code>
+	 *
+	 * @return <code>Collection<Pedido></code>
+	 */
+	public Collection<Pedido> getColecaoOedidos() {
+
+		return this.colecaoOedidos;
+	}
+
+	/**
+	 * Define o valor do atributo <code>colecaoOedidos</code>.
+	 *
+	 * @param colecaoOedidos
+	 */
+	public void setColecaoOedidos(final Collection<Pedido> colecaoOedidos) {
+
+		this.colecaoOedidos = colecaoOedidos;
 	}
 
 	/**
