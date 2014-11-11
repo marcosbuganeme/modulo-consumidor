@@ -1,6 +1,8 @@
 modulo-consumidor
 =================
 
+App desenvolvido para a oobj como teste da vaga desenvolvedor pleno java
+
 módulo consumidor - JMS
 
 Projeto rodando sob JAVA EE 1.7
